@@ -1,48 +1,17 @@
-#3_SUM
+#27. Remove Element
 
--
-
-
+Link - https://leetcode.com/problems/remove-element/description/
 
 ```python
-class Solution {
-public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> result;
-        sort(nums.begin(), nums.end());  
-        
-        int n = nums.size();
-        
-        for (int i = 0; i < n; i++) {
-            if (i > 0 && nums[i] == nums[i - 1]) 
-                continue;
 
-            int left = i + 1;
-            int right = n - 1;
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        k=0
+        for i in range(len(nums)):
+            if nums[i]!=val:
+                nums[k]=nums[i]
+                k+=1
+        return k
 
-            while (left < right) {
-                long sum = (long)nums[i] + nums[left] + nums[right];
-
-                if (sum == 0) {
-                    result.push_back({nums[i], nums[left], nums[right]});
-                    left++;
-                    right--;
-
-                    
-                    while (left < right && nums[left] == nums[left - 1]) left++;
-                    while (left < right && nums[right] == nums[right + 1]) right--;
-                }
-                else if (sum < 0) {
-                    left++;
-                }
-                else {
-                    right--;
-                }
-            }
-        }
-
-        return result;
-    }
-};
 
 ```
